@@ -3,11 +3,6 @@ angular.module('perfectParallax', []).directive('perfectParallax', [
 
     return {
       restrict: 'A',
-      scope: {
-        parallaxCss: '@',
-        parallaxInitVal: '@',
-        parallaxRatio: '@'
-      },
       link: function(iScope, iElem, iAttr) {
         var cssKey,
           cssValue,
@@ -18,7 +13,7 @@ angular.module('perfectParallax', []).directive('perfectParallax', [
           parallaxInitVal,
           cssValArray;
 
-        parallaxCssVal = iScope.parallaxCss ? iScope.parallaxCss : 'top';
+        parallaxCssVal = iAttr.parallaxCss ? iAttr.parallaxCss : 'top';
         cssValArray = parallaxCssVal.split(':');
         cssKey = cssValArray[0];
         cssValue = cssValArray[1];
@@ -26,8 +21,8 @@ angular.module('perfectParallax', []).directive('perfectParallax', [
         isSpecialVal = cssValue ? true : false;
         if (!cssValue) cssValue = cssKey;
 
-        parallaxRatio = iScope.parallaxRatio ? +iScope.parallaxRatio : 1.1;
-        parallaxInitVal = iScope.parallaxInitVal ? +iScope.parallaxInitVal : 0;
+        parallaxRatio = iAttr.parallaxRatio ? + iAttr.parallaxRatio : 1.1;
+        parallaxInitVal = iAttr.parallaxInitVal ? + iAttr.parallaxInitVal : 0;
 
         iElem.css(cssKey, parallaxInitVal + 'px');
 
