@@ -44,6 +44,10 @@ angular.module('perfectParallax', []).directive('perfectParallax', [
         };
 
         $window.addEventListener('scroll', _onScroll);
+        
+        iScope.$on('$destroy', function(){
+            $window.removeEventListener('scroll', _onScroll);
+        });
 
       }
     };
